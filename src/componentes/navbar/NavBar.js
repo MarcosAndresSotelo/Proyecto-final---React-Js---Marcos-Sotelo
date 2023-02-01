@@ -9,56 +9,55 @@ import { Link } from 'react-router-dom';
 export const NavBar = () => {
     return (
         <Navbar bg="light" expand="lg">
-            <Container style={{ textDecoration: 'none' }}>
+            <Container style={{ textDecoration: 'none' }} className="d-flex">
                 <Link to='/inicio' style={{ fontSize: "50px", textDecoration: 'none' }}>Maria</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto" style={{ paddingLeft: "350px", fontSize: "20px" }}>
-                        <Link to='/inicio' style={{ textDecoration: 'none', paddingLeft: "30px" }}>Inicio</Link>
+                    <Nav className="me-auto d-fex justify-content-end align-items-center w-100" style={{ fontSize: "20px" }}>
+                        <Link to='/inicio' className='m-2' style={{ textDecoration: 'none' }}>Inicio</Link>
                         <NavDropdown title='Living y Comedor'>
-                            <Link to='/livingComedor'>
+                            <Link to='/livingComedor' className='dropdown-item'>
                                 Todos los articulos
                             </Link>
                             <br />
-                            <Link to='/livingComedor/accesorio'>
+                            <Link to='/livingComedor/accesorio' className='dropdown-item'>
                                 Accesorio
                             </Link>
                             <br />
-                            <Link to='/livingComedor/mantel'>
+                            <Link to='/livingComedor/mantel' className='dropdown-item'>
                                 Manteles
                             </Link>
                             <br />
-                            <Link to='/livingComedor/cortina'>
+                            <Link to='/livingComedor/cortina' className='dropdown-item'>
                                 Cortinas
                             </Link>
                         </NavDropdown>
 
 
-                        <NavDropdown title='Dormitorio y Baño'>
-                            <Link to='/dormitorioBanio'>
+                        <NavDropdown title='Dormitorio y Baño' className='m-2'>
+                            <Link to='/dormitorioBano' className='dropdown-item'>
                                 Todos los articulos
                             </Link>
                             <br />
-                            <Link to='/dormitorioBanio/acolchado'>
+                            <Link to='/dormitorioBano/acolchado' className='dropdown-item'>
                                 Acolchados
                             </Link>
                             <br />
-                            <Link to='/dormitorioBanio/alfombra'>
+                            <Link to='/dormitorioBano/alfombra' className='dropdown-item'>
                                 Alfombras
                             </Link>
                             <br />
-                            <Link to='/dormitorioBanio/frazada'>
+                            <Link to='/dormitorioBano/frazada' className='dropdown-item'>
                                 Frazadas
                             </Link>
                         </NavDropdown>
 
-                        <Link to='/acercaDe' style={{ textDecoration: 'none', paddingLeft: "30px" }} >Acerca de</Link>
-                        <Link to='/contacto' style={{ textDecoration: 'none', paddingLeft: "30px" }}>Contacto</Link>
-                        <Link to='/carrito' style={{ textDecoration: 'none', paddingLeft: "30px" }}>Carrito de prueba </Link>
+                        <Link to='/acercaDe' style={{ textDecoration: 'none' }} className="m-2" >Acerca de</Link>
+                        <Link to='/contacto' style={{ textDecoration: 'none' }} className="m-2">Contacto</Link>
+                        <Link to='/carrito' style={{ textDecoration: 'none' }} className="m-2">Carrito de prueba </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-
         </Navbar >
     );
 }
