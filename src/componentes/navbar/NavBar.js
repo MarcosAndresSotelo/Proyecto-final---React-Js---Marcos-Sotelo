@@ -3,10 +3,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-// import CarritoCompras from '../carrito/CarritoCompras';
+import { FaShoppingCart } from 'react-icons/fa'
+import { useContext } from 'react';
+import { CarritoContext } from '../../context/CarritoContext';
+// import CarritoDeCompras from '../carrito/CarritoDeCompras';
 
 
 export const NavBar = () => {
+
+//     const [cart, setCart] = useContext(CarritoContext);
+
+//   const quantity = cart.reduce((acc, curr) => {
+//     return acc + curr.quantity;
+//   }, 0);
+
     return (
         <Navbar bg="light" expand="lg">
             <Container style={{ textDecoration: 'none' }} className="d-flex">
@@ -54,7 +64,11 @@ export const NavBar = () => {
 
                         <Link to='/acercaDe' style={{ textDecoration: 'none' }} className="m-2" >Acerca de</Link>
                         <Link to='/contacto' style={{ textDecoration: 'none' }} className="m-2">Contacto</Link>
-                        <Link to='/carrito' style={{ textDecoration: 'none' }} className="m-2">Carrito de prueba </Link>
+                        {/* <Link to='/carrito' style={{ textDecoration: 'none' }} className="m-2">Carrito de prueba </Link> */}
+                        <Link to="/carrito" >
+                            <FaShoppingCart /><span className="cartCount">0</span>
+                        </Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

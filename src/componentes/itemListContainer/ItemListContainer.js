@@ -1,21 +1,25 @@
 import { collection, getDocs } from "firebase/firestore"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Spinner } from "react-bootstrap"
+import { useLocation, useParams } from "react-router-dom"
 import { db } from "../firebase/config"
 import ItemList from "../itemList/ItemList"
-import Spinner from "../spinner/Spinner";
 
-const pathLivingComedor = '/livingcomedor';
-const pathDormitorioBano = '/dormitorioBano';
+const pathLivingComedor = 'livingcomedor';
+const pathDormitorioBano = 'dormitorioBano';
 
 const ItemListContainer = () => {
+    const currentPathObject = useLocation();
     const { categoria } = useParams()
+
+    //States
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        const currentPath = currentPathObject.pathname.split("/")[1];
+        setLoading(true)
         let collectionName = "";
-        const currentPath = window.location.pathname.split("/")[1];
         switch (currentPath) {
             case pathLivingComedor: collectionName = "productos";
                 break;
@@ -23,39 +27,40 @@ const ItemListContainer = () => {
                 break;
             default: collectionName = "productos";
         }
-        setLoading(true)
+
         const productosRef = collection(db, collectionName)
         getDocs(productosRef)
             .then((resp) => {
-                setProductos(resp.docs.map((doc) => { return { ...doc.data(), id: doc.id } }))
+                if (categoria) {
+                    setProductos(resp.docs.map((doc) => { return { ...doc.data(), id: doc.id } }).filter((producto) => { return producto.categoria === categoria }))
+                } else {
+                    setProductos(resp.docs.map((doc) => { return { ...doc.data(), id: doc.id } }))
+                }
                 setLoading(false)
             })
-    }, [])
+    }, [currentPathObject, categoria])
 
     if (loading) {
         return (
-            <Spinner />
-        )
-    }
-
-    if (categoria) {
-        return (
-            <div>
-                {
-                    <ItemList productos={productos.filter((producto) => { return producto.categoria === categoria })} />
-                }
+            <div className="text-center container my-5">
+                <br/>
+                <h2>Nuestros productos</h2>
+                <hr/>
+                <Spinner />
             </div>
         )
     } else {
         return (
             <div>
-                {
-                    <ItemList productos={productos} />
-                }
+                <div>
+                    {
+                        <ItemList productos={productos} />
+                    }
+                </div>
             </div>
         )
-    }
 
+    }
 }
 
 export default ItemListContainer

@@ -1,0 +1,27 @@
+.imagenIndex {
+    width: 99vw;
+    height: 85vh;
+    display: flex;
+    align-items: end;
+    background: url(../../../../public/img/ceramica.jpg);
+    background-size: cover;
+    background-position: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.textoIndex {
+    margin-bottom: 30px;
+    font-size: 4rem;
+}
+
+.textoIndexProd {
+    font-size: 3rem;
+}
+
+.botonIndex {
+    text-align: center;
+}

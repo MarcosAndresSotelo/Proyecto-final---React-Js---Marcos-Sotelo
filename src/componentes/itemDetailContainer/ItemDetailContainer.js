@@ -14,7 +14,6 @@ const ItemDetailContainer = () => {
         const docRef = doc(db, "productos", id);
         getDoc(docRef)
             .then(doc => {
-                console.log(doc);
                 setItem({ ...doc.data(), id: doc.id })
             })
 

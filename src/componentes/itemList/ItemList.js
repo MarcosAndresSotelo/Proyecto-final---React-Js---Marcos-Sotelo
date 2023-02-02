@@ -3,7 +3,7 @@ import Item from "../item/Item"
 
 const ItemList = ({ productos }) => {
     return (
-        <div className="container my-5">
+        <div className="text-center container my-5">
             <h2>Nuestros productos</h2>
             <hr />
 
@@ -15,3 +15,4 @@ const ItemList = ({ productos }) => {
 }
 
 export default ItemList
+    
