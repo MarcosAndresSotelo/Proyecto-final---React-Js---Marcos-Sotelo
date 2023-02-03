@@ -2,11 +2,11 @@ import { collection, getDocs } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { Spinner } from "react-bootstrap"
 import { useLocation, useParams } from "react-router-dom"
+import { pathDormitorioBano, pathLivingComedor } from "../../App"
 import { db } from "../firebase/config"
 import ItemList from "../itemList/ItemList"
 
-const pathLivingComedor = 'livingcomedor';
-const pathDormitorioBano = 'dormitorioBano';
+
 
 const ItemListContainer = () => {
     const currentPathObject = useLocation();
@@ -43,9 +43,9 @@ const ItemListContainer = () => {
     if (loading) {
         return (
             <div className="text-center container my-5">
-                <br/>
+                <br />
                 <h2>Nuestros productos</h2>
-                <hr/>
+                <hr />
                 <Spinner />
             </div>
         )
@@ -54,7 +54,7 @@ const ItemListContainer = () => {
             <div>
                 <div>
                     {
-                        <ItemList productos={productos} />
+                        <ItemList productos={productos} collectionName={currentPathObject.pathname.split("/")[1]} />
                     }
                 </div>
             </div>

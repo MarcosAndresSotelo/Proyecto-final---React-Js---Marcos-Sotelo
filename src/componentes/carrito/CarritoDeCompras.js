@@ -1,17 +1,18 @@
 import { useContext } from "react"
-import { CartContext } from "../../context/CarritoContext"
 import { FaTrashAlt } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import { CartContext } from "../../context/CarritoContext"
 
 const CarritoDeCompras = () => {
 
     const { cart, emptycart, totalCart, removerItem } = useContext(CartContext)
 
-
     if (cart.length === 0) {
         return (
             <div className="container my-5">
-                <h2> Carrito vacío</h2>
+                <h2>Tu carrito está vacío</h2>
+                <hr />
+                <p>Andá a comprar algo</p>
                 <Link to="/" className="btn btn-primary">Volver</Link>
             </div>
         )
@@ -25,9 +26,10 @@ const CarritoDeCompras = () => {
             {
                 cart.map(item => (
                     <div key={item.id}>
-                        <h4>{item.name}</h4>
+                        <h4>{item.nombre}</h4>
+                        <img src={item.img} alt={item.nombre} style={{ maxWidth: "150px" }} />
                         <p>Cantidad: {item.cantidad}</p>
-                        <p>Precio: ${item.price * item.cantidad}</p>
+                        <p>Precio: ${item.precio * item.cantidad}</p>
                         <button onClick={() => removerItem(item.id)} className="btn btn-outline-danger"><FaTrashAlt /></button>
                         <hr />
                     </div>

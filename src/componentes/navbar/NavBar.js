@@ -4,21 +4,32 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa'
-import { useContext } from 'react';
-import { CarritoContext } from '../../context/CarritoContext';
+// import { useContext } from 'react';
+import { useCartContext } from '../../context/CarritoContext';
 
 
 
 export const NavBar = () => {
 
+    const { cart } = useCartContext()
+
+
+
+
     return (
         <Navbar bg="light" expand="lg">
             <Container style={{ textDecoration: 'none' }} className="d-flex">
+
                 <Link to='/inicio' style={{ fontSize: "50px", textDecoration: 'none' }}>Maria</Link>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
                 <Navbar.Collapse id="basic-navbar-nav">
+
                     <Nav className="me-auto d-fex justify-content-end align-items-center w-100" style={{ fontSize: "20px" }}>
                         <Link to='/inicio' className='m-2' style={{ textDecoration: 'none' }}>Inicio</Link>
+
+
                         <NavDropdown title='Living y Comedor'>
                             <Link to='/livingComedor' className='dropdown-item'>
                                 Todos los articulos
@@ -58,9 +69,9 @@ export const NavBar = () => {
 
                         <Link to='/acercaDe' style={{ textDecoration: 'none' }} className="m-2" >Acerca de</Link>
                         <Link to='/contacto' style={{ textDecoration: 'none' }} className="m-2">Contacto</Link>
-                        {/* <Link to='/carrito' style={{ textDecoration: 'none' }} className="m-2">Carrito de prueba </Link> */}
+
                         <Link to="/carrito" >
-                            <FaShoppingCart /><span className="cartCount">0</span>
+                            <FaShoppingCart /><span className="cartCount">{cart.length}</span>
                         </Link>
 
                     </Nav>
