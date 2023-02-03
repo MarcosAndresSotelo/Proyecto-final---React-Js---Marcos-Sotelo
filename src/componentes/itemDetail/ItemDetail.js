@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useCartContext, useState } from "react";
-import ItemCount from "../itemCount/ItemCount";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/CarritoContext"
+import ItemContador from "../itemContador/ItemContador";
+
 
 const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) => {
+
+    const { agregarAlCarrito } = useContext(CartContext);
 
     const navigate = useNavigate();
 
@@ -11,25 +14,6 @@ const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) 
         navigate(-1);
     };
 
-    const { agregarAlCarrito, isInCart } = useCartContext()
-
-    const [cantidad, setCantidad] = useState(1)
-
-
-    const handleAgregar = () => {
-        const item = {
-            id,
-            nombre,
-            stock,
-            categoria,
-            img,
-            descripcion,
-            precio,
-            cantidad
-        }
-
-        agregarAlCarrito(item)
-    }
 
 
     return (
@@ -43,16 +27,7 @@ const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) 
 
             {stock <= 20 && <h5>Últimas unidades disponibles!</h5>}
 
-            {
-                !isInCart(id)
-                    ? <ItemCount
-                        cantidad={cantidad}
-                        setCantidad={setCantidad}
-                        max={stock}
-                        onAdd={handleAgregar}
-                    />
-                    : <Link to="/carrito" className="btn btn-success">Terminar mi compra</Link>
-            }
+            <ItemContador id={id} name={nombre} stock={stock} price={precio} agregarAlCarrito={agregarAlCarrito} />
 
             <hr />
 

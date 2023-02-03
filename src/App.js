@@ -10,6 +10,7 @@ import Footer from './componentes/footer/Footer';
 import AcercaDe from "./componentes/pages/acercaDe/AcercaDe";
 import Contacto from "./componentes/pages/contacto/Contacto";
 import Inicio from "./componentes/pages/inicio/Inicio";
+import { CartProvider } from './context/CarritoContext';
 
 
 function App() {
@@ -18,18 +19,22 @@ function App() {
 
       <NavBar />
 
-      <Routes>
-        <Route path='/inicio' element={<Inicio />} />
-        <Route path='/acercaDe' element={<AcercaDe />} />
-        <Route path='/contacto' element={<Contacto />} />
-        <Route path='/carrito' element={<CarritoCompras />} />
+      <CartProvider>
 
-        <Route path='/livingcomedor' element={<ItemListContainer />} />
-        <Route path='/livingcomedor/:categoria' element={<ItemListContainer />} />
-        <Route path='/detail/item/:id' element={<ItemDetailContainer />} />
-        <Route path='/dormitorioBano' element={<ItemListContainer />} />
-        <Route path='/dormitorioBano/:categoria' element={<ItemListContainer />} />
-      </Routes>
+        <Routes>
+          <Route path='/inicio' element={<Inicio />} />
+          <Route path='/acercaDe' element={<AcercaDe />} />
+          <Route path='/contacto' element={<Contacto />} />
+          <Route path='/carrito' element={<CarritoCompras />} />
+
+          <Route path='/livingcomedor' element={<ItemListContainer />} />
+          <Route path='/livingcomedor/:categoria' element={<ItemListContainer />} />
+          <Route path='/detail/item/:id' element={<ItemDetailContainer />} />
+          <Route path='/dormitorioBano' element={<ItemListContainer />} />
+          <Route path='/dormitorioBano/:categoria' element={<ItemListContainer />} />
+        </Routes>
+
+      </CartProvider>
       
       <Footer />
 
