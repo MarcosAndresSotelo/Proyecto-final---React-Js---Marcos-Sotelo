@@ -66,7 +66,7 @@ export const Checkout = () => {
                         .catch((error) => console.log(error))
                 })
         } else {
-            Swal.fire('Any fool can use a computer')
+            Swal.fire('No hay stock del producto')
         }
 
     }
