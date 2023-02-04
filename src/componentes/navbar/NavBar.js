@@ -17,7 +17,7 @@ export const NavBar = () => {
 
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className='Nav' bg="light" expand="lg">
             <Container style={{ textDecoration: 'none' }} className="d-flex">
 
                 <Link to='/inicio' style={{ fontSize: "50px", textDecoration: 'none' }}>Maria</Link>

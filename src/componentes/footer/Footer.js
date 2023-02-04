@@ -1,7 +1,5 @@
-
-// import logo from "../../../public/img/logo.png";
-// import { BiInstagram } from "react-icons/bi";
-// import "./footer.scss"
+import React from 'react';
+import './footer.scss';
 
 const Footer = () => {
     return (
@@ -9,7 +7,6 @@ const Footer = () => {
             <div className="col-12 col-lg-4">
                 <a href="index.html">
                     <h1 className="text-dark fs-1 logoFooter d-flex justify-content-around">
-                        {/* <img src={logo} alt="logo" /> */}
                     </h1>
                 </a>
             </div>
@@ -21,7 +18,7 @@ const Footer = () => {
                 <h1 className="fs-5 d-flex justify-content-around">Redes Sociales:</h1>
                 <div className="d-flex justify-content-center">
                     <a href="http://www.Instagram.com">
-                        {/* <BiInstagram width={30} height={30} fill="currentColor" /> */}
+
                     </a>
                 </div>
             </section>

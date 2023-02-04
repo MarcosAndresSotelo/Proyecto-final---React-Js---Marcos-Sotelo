@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import "./contacto.scss"
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +9,8 @@ const Contacto = () => {
     message: ""
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -25,12 +26,15 @@ const Contacto = () => {
 
   return (
     <Container className="my-5">
+      <h1 className="text-center">Contacto</h1>
+      <hr />
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <Form onSubmit={handleSubmit}>
+          <Form className="text-center" onSubmit={handleSubmit}>
             <Form.Group controlId="formName">
-              <Form.Label>Nombre</Form.Label>
+              <Form.Label>Nombre:</Form.Label>
               <Form.Control
+                className="form-control"
                 type="text"
                 name="name"
                 value={formData.name}
@@ -39,8 +43,9 @@ const Contacto = () => {
               />
             </Form.Group>
             <Form.Group controlId="formEmail">
-              <Form.Label>Email</Form.Label>
+              <Form.Label>Email:</Form.Label>
               <Form.Control
+                className="form-control"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -49,8 +54,9 @@ const Contacto = () => {
               />
             </Form.Group>
             <Form.Group controlId="formMessage">
-              <Form.Label>Mensaje</Form.Label>
+              <Form.Label>Mensaje:</Form.Label>
               <Form.Control
+                className="form-control"
                 as="textarea"
                 rows="3"
                 name="message"
@@ -59,14 +65,14 @@ const Contacto = () => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="btn mt-2" variant="secondary" type="submit">
               Enviar
             </Button>
           </Form>
         </Col>
       </Row>
     </Container>
-  );
+  )
 };
 
 export default Contacto;

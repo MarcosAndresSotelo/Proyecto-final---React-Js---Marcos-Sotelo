@@ -1,36 +1,29 @@
-footer{
-    background-color: map-get($map: $fondos, $key: fondoFooter );
-}
-
-@mixin rrss ($hover) {
-    &:hover {
-        color: $hover;
+.footer {
+    padding: 2rem;
+    background-color: rgb(246, 245, 245);
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  
+    .footerCont {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      h1, h2 {
+        margin: 0;
+      }
+  
+      a {
+        color: #fff;
+      }
     }
-}
-
-.bi {
-    color: black;
-    margin: 10px;
-}
-
-.bi-instagram {
-    @include rrss (#517fa4);
-}
-
-.bi-facebook {
-    @include rrss(#3d5998)
-}
-
-.bi-twitter {
-    @include rrss (#00aced)
-}
-
-.bi-whatsapp {
-    @include rrss (#12867e)
-}
-
-.footerMt {
-    h1 {
-        margin-top: 41px;
+  
+    .footerMt {
+      margin-top: 40px;
     }
-}
+  
+    .logoFooter {
+      height: 100px;
+      width: 100px;
+    }
+  }

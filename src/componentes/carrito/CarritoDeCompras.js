@@ -9,17 +9,15 @@ const CarritoDeCompras = () => {
 
     if (cart.length === 0) {
         return (
-            <div className="container my-5">
-                <h2>Tu carrito está vacío</h2>
-                <hr />
-                <p>Andá a comprar algo</p>
-                <Link to="/" className="btn btn-primary">Volver</Link>
+            <div className="container my-5 text-center">
+                <h2>No hay elementos en el carrito</h2>
+                <Link to="/livingcomedor" className="btn btn-primary">SEGUIR COMPRANDO</Link>
             </div>
         )
     }
 
     return (
-        <div className="container my-5">
+        <div className="container my-5 text-center">
             <h2>Tu compra</h2>
             <hr />
 

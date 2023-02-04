@@ -1,6 +1,9 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import "./acercaDe.scss"
+import acercade from "../acercaDe/acercaDeImg/acercade.jpg"
+import acercadedos from "../acercaDe/acercaDeImg/acercadedos.jpg"
+import acercadetres from "../acercaDe/acercaDeImg/acercadetres.jpg"
 
 const AcercaDe = () => {
     return (
@@ -14,21 +17,21 @@ const AcercaDe = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="../../../../public/img/acercade.jpg"
+                                src={acercade}
                                 alt="First slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="../../../../public/img/acercadedos.jpg"
+                                src={acercadedos}
                                 alt="Second slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="../../../../public/img/acercadetres.jpg"
+                                src={acercadetres}
                                 alt="Third slide"
                             />
                         </Carousel.Item>
