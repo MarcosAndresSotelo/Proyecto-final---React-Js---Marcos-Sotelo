@@ -8,8 +8,6 @@ import "./itemDetail.scss";
 
 export const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) => {
 
-    console.log(img);
-
     const navigate = useNavigate();
 
     const handleVolver = () => {

@@ -62,8 +62,7 @@ export const Checkout = () => {
                         .then((doc) => {
                             setOrderId(doc.id)
                             emptycart()
-                        })
-                        .catch((error) => console.log(error))
+                        })                       
                 })
         } else {
             Swal.fire('No hay stock del producto')

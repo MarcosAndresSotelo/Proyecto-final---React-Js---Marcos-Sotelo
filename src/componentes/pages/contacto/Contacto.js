@@ -16,7 +16,6 @@ const Contacto = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submitted with data: ", formData);
     setFormData({
       name: "",
       email: "",
