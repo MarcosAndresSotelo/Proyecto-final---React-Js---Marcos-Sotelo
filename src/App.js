@@ -27,16 +27,20 @@ function App() {
 
         <Routes>
 
-          <Route path='/inicio' element={<Inicio />} />
+          <Route path='/' element={<Inicio />} />
           <Route path='/acercaDe' element={<AcercaDe />} />
           <Route path='/contacto' element={<Contacto />} />
+
           <Route path='/carrito' element={<CarritoCompras />} />
 
           <Route path='/livingcomedor' element={<ItemListContainer />} />
           <Route path='/livingcomedor/:categoria' element={<ItemListContainer />} />
-          <Route path='/detail/:category/item/:id' element={<ItemDetailContainer />} />
+
           <Route path='/dormitorioBano' element={<ItemListContainer />} />
           <Route path='/dormitorioBano/:categoria' element={<ItemListContainer />} />
+
+          <Route path='/detail/:category/item/:id' element={<ItemDetailContainer />} />
+
           <Route path='/checkout' element={<Checkout />} />
 
         </Routes>

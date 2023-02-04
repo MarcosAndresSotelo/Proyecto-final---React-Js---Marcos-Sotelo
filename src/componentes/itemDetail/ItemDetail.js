@@ -1,9 +1,12 @@
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CarritoContext";
 import ItemCount from "../itemCount/ItemCount";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import "./itemDetail.scss";
 
-const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) => {
+export const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) => {
 
     console.log(img);
 
@@ -13,10 +16,9 @@ const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) 
         navigate(-1);
     };
 
-    const { agregarAlCarrito, isInCart } = useCartContext()
+    const { agregarAlCarrito, isInCart } = useCartContext();
 
-    const [cantidad, setCantidad] = useState(1)
-
+    const [cantidad, setCantidad] = useState(1);
 
     const handleAgregar = () => {
         const item = {
@@ -27,41 +29,50 @@ const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, precio }) 
             img,
             descripcion,
             precio,
-            cantidad
-        }
+            cantidad,
+        };
 
-        agregarAlCarrito(item)
-    }
-
+        agregarAlCarrito(item);
+    };
 
     return (
-        <div>
-            <h2>{nombre}</h2>
-            <img src={img} alt={nombre} />
-            <br />
-            <small>Categoría: {categoria}</small>
-            <p>{descripcion}</p>
-            <p>Precio: ${precio}</p>
+        <Container className="item-detail">
+            <Row>
+                <Col md={5}>
+                    <Image src={img} alt={nombre} fluid />
+                </Col>
+                <Col md={7}>
+                    <h2>{nombre}</h2>
+                    <small className="text-muted">Categoría: {categoria}</small>
+                    <p>{descripcion}</p>
+                    <p>Precio: ${precio}</p>
 
-            {stock <= 20 && <h5>Últimas unidades disponibles!</h5>}
+                    {stock <= 20 && (
+                        <h5 className="text-danger">Últimas unidades disponibles!</h5>
+                    )}
 
-            {
-                !isInCart(id)
-                    ? <ItemCount
-                        cantidad={cantidad}
-                        setCantidad={setCantidad}
-                        max={stock}
-                        onAdd={handleAgregar}
-                    />
-                    : <Link to="/carrito" className="btn btn-success">Terminar mi compra</Link>
-            }
+                    {!isInCart(id) ? (
+                        <ItemCount
+                            cantidad={cantidad}
+                            setCantidad={setCantidad}
+                            max={stock}
+                            onAdd={handleAgregar}
+                        />
+                    ) : (
+                        <Link to="/carrito">
+                            <Button variant="success">Terminar mi compra</Button>
+                        </Link>
+                    )}
 
-            <hr />
+                    <hr />
 
-            <button className="btn btn-primary" onClick={handleVolver}>Volver</button>
+                    <Button variant="primary" onClick={handleVolver}>
+                        Volver
+                    </Button>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
 
-        </div>
-    )
-}
-
-export default ItemDetail
+export default ItemDetail;
