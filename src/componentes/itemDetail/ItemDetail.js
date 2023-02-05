@@ -45,7 +45,7 @@ export const ItemDetail = ({ id, nombre, stock, categoria, img, descripcion, pre
                     <p>{descripcion}</p>
                     <p>Precio: ${precio}</p>
 
-                    {stock <= 20 && (
+                    {stock <= 10 && (
                         <h5 className="text-danger">Últimas unidades disponibles!</h5>
                     )}
 
